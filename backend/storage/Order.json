@@ -1,0 +1,62 @@
+[
+ {
+  "isPaid": false,
+  "isDelivered": false,
+  "orderItems": [
+   {
+    "name": "Annibale Colombo Bed",
+    "image": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/thumbnail.webp",
+    "price": 1899.99,
+    "countInStock": 88,
+    "product": "2df52ac0fee83fb5124915b5",
+    "qty": 1
+   }
+  ],
+  "shippingAddress": {
+   "fullName": "Priya Sharma",
+   "address": "clement town",
+   "city": "Dehradun",
+   "postalCode": "248002",
+   "country": "India"
+  },
+  "paymentMethod": "PayPal",
+  "itemsPrice": 1899.99,
+  "shippingPrice": 0,
+  "taxPrice": 152,
+  "totalPrice": 2051.99,
+  "user": "87d9c095a18d52a419b489ab",
+  "_id": "fb4309f88f0c88fabaceccee",
+  "createdAt": "2026-07-19T16:58:33.311Z",
+  "updatedAt": "2026-07-19T16:58:33.311Z"
+ },
+ {
+  "isPaid": false,
+  "isDelivered": false,
+  "orderItems": [
+   {
+    "name": "iPhone X",
+    "image": "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/thumbnail.webp",
+    "price": 899.99,
+    "countInStock": 37,
+    "product": "dd3b79ba9b9a1c3281bd48d3",
+    "qty": 1
+   }
+  ],
+  "shippingAddress": {
+   "fullName": "Demo User",
+   "address": "42 Market Street",
+   "city": "Mumbai",
+   "postalCode": "400001",
+   "country": "India"
+  },
+  "paymentMethod": "Cash On Delivery",
+  "itemsPrice": 899.99,
+  "shippingPrice": 0,
+  "taxPrice": 72,
+  "totalPrice": 971.99,
+  "user": "e48582c3db02bcedf5a00455",
+  "_id": "2cfa3a128da41b21331c8cb4",
+  "createdAt": "2026-07-19T17:23:37.728Z",
+  "updatedAt": "2026-07-19T17:23:37.728Z"
+ }
+]
