@@ -79,7 +79,7 @@ export default function OrderScreen(props) {
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(order, paymentResult));
-    fetch(`http://127.0.0.1:5000/send-text?recipient=${recipient}&textmessage=${textmessage}`)
+    Axios.get('/send-text', { params: { recipient, textmessage } })
       .catch((err) => console.error(err));
   };
 
