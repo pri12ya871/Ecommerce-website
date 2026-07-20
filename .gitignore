@@ -1,2 +1,5 @@
 node_modules/
 .env
+
+# runtime-generated datastore (auto-seeded on first server start)
+backend/storage/
