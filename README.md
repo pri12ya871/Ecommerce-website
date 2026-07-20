@@ -70,6 +70,28 @@ reject seller requests, full product CRUD.
   open [dummyjson](https://dummyjson.com) dataset)
 - **Integrations:** PayPal JS SDK (sandbox), optional Twilio SMS, jsPDF
 
+## Deployment
+
+The app deploys as two pieces:
+
+**API → Render** (repo includes [`render.yaml`](render.yaml)):
+1. In Render: *New → Blueprint*, pick this repo — it creates the
+   `icon-store-api` web service (free plan) automatically.
+2. Note the service URL, e.g. `https://icon-store-api.onrender.com`.
+
+**Frontend → Vercel**:
+1. In Vercel: *Add New → Project*, import this repo and set
+   **Root Directory** to `frontend`.
+2. Add an environment variable
+   `REACT_APP_API_URL = https://<your-render-service>.onrender.com`.
+3. Deploy — build command and SPA rewrites are already configured
+   (`frontend/vercel.json`).
+
+Note: on Render's free tier the JSON datastore resets whenever the
+instance sleeps or redeploys — the catalog and demo accounts re-seed
+automatically on startup, so the store always works; only user-created
+data (orders, registrations) is ephemeral.
+
 ## Screenshots
 
 See the [`screenshots/`](screenshots) folder for full-page captures of the

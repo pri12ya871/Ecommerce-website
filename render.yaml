@@ -1,0 +1,15 @@
+# Render blueprint — deploys the Express API as a web service.
+# The frontend is deployed separately on Vercel (root directory: frontend/).
+services:
+  - type: web
+    name: icon-store-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/products
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PAYPAL_CLIENT_ID
+        value: sb
