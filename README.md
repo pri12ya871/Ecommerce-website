@@ -72,7 +72,22 @@ reject seller requests, full product CRUD.
 
 ## Deployment
 
-The app deploys as two pieces:
+The app deploys as two pieces: an Express API and the React frontend.
+
+### Live demo API (already deployed on Vercel)
+
+A serverless build of the API is live on Vercel at
+`https://icon-store-api-pri12ya871s-projects.vercel.app`
+(project `icon-store-api`). It seeds the full catalog from
+[`backend/seed-data.json`](backend/seed-data.json) into `/tmp` on startup.
+
+**One manual step to make it public:** new Vercel projects ship with
+*Deployment Protection* on, which puts every request behind a Vercel login.
+Turn it off so browsers can call the API:
+*Vercel → project `icon-store-api` → Settings → Deployment Protection →
+Vercel Authentication → Disable → Save.*
+
+### Owned, git-connected setup (recommended for a portfolio)
 
 **API → Render** (repo includes [`render.yaml`](render.yaml)):
 1. In Render: *New → Blueprint*, pick this repo — it creates the
@@ -82,15 +97,16 @@ The app deploys as two pieces:
 **Frontend → Vercel**:
 1. In Vercel: *Add New → Project*, import this repo and set
    **Root Directory** to `frontend`.
-2. Add an environment variable
-   `REACT_APP_API_URL = https://<your-render-service>.onrender.com`.
+2. Add an environment variable `REACT_APP_API_URL` pointing at your API —
+   either the Render service above, or the live Vercel API once its
+   Deployment Protection is disabled.
 3. Deploy — build command and SPA rewrites are already configured
    (`frontend/vercel.json`).
 
-Note: on Render's free tier the JSON datastore resets whenever the
-instance sleeps or redeploys — the catalog and demo accounts re-seed
+Note: on both Render's free tier and the Vercel serverless build, the JSON
+datastore is ephemeral — the catalog and demo accounts re-seed
 automatically on startup, so the store always works; only user-created
-data (orders, registrations) is ephemeral.
+data (orders, registrations) does not persist across restarts.
 
 ## Screenshots
 
