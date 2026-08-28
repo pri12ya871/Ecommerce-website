@@ -90,9 +90,20 @@ async function seed() {
   }
 }
 
-const port = process.env.PORT || 5000;
-seed().then(() => {
-  app.listen(port, () => {
-    console.log(`Serve at http://localhost:${port}`);
+// Seeding kicks off at import time; the serverless entry point in api/
+// awaits this promise before handling its first request.
+const ready = seed();
+
+// Vercel invokes the exported app directly — only bind a port when running
+// as a normal long-lived process (local dev, Render).
+if (!process.env.VERCEL) {
+  const port = process.env.PORT || 5000;
+  ready.then(() => {
+    app.listen(port, () => {
+      console.log(`Serve at http://localhost:${port}`);
+    });
   });
-});
+}
+
+export { app, ready };
+export default app;

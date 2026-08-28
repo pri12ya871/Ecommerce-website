@@ -36,14 +36,14 @@ export default function CustomerProductList() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="page">
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <div className="row center">
+          <div className="pgrid">
             {currentPosts.map((product) => (
               <CustomerProduct key={product._id} product={product}></CustomerProduct>
             ))}

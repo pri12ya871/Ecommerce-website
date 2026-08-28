@@ -1,4 +1,4 @@
-import { imgSrc, formatPrice } from '../utils';
+import { imgSrc, onImgError, formatPrice } from '../utils';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Rating from './Rating';
@@ -29,31 +29,42 @@ export default function CustomerProduct(props) {
 
     }
 
-    return (<>
-
-        <div key={product._id} className="card">
-            <Link to={`/adminproduct/${product._id}`}>
-                <img className="medium" src={imgSrc(product.image)} alt={product.name} />
+    return (
+        <div className="pcard">
+            <Link to={`/adminproduct/${product._id}`} className="pcard-media">
+                <img
+                    src={imgSrc(product.image)}
+                    onError={onImgError}
+                    alt={product.name}
+                    loading="lazy"
+                />
             </Link>
-            <div className="card-body">
+            <div className="pcard-body">
+                <span className="pcard-brand">{product.brand}</span>
                 <Link to={`/adminproduct/${product._id}`}>
-                    <h2>{product.name}</h2>
+                    <h3 className="pcard-name">{product.name}</h3>
                 </Link>
                 <Rating
                     rating={product.rating}
                     numReviews={product.numReviews}
                 ></Rating>
-                <div className="price">{formatPrice(product.price)}</div>
-                <div style={{ margin: "auto", width: "60%" }}>
-                    <button onClick={() => { editProduct(product._id) }} className="primary" type="submit">
-                        Edit
+                <div className="pcard-priceline">
+                    <span className="price">{formatPrice(product.price)}</span>
+                </div>
+                <span className={`pcard-stock ${product.countInStock === 0 ? 'out' : product.countInStock <= 5 ? 'low' : 'in'}`}>
+                    {product.countInStock === 0
+                        ? 'Out of stock'
+                        : `${product.countInStock} in stock`}
+                </span>
+                <div className="pcard-actions">
+                    <button onClick={() => { editProduct(product._id) }} className="btn btn-outline" type="button">
+                        <i className="fa fa-pencil"></i> Edit
                     </button>
-                    <button onClick={() => { deleteProd(product._id) }} style={{ marginLeft: "1rem", display: "inline" }} className="primary" type="submit">
-                        Delete
+                    <button onClick={() => { deleteProd(product._id) }} className="btn btn-danger-soft" type="button">
+                        <i className="fa fa-trash"></i> Delete
                     </button>
                 </div>
             </div>
         </div>
-    </>
     );
 }

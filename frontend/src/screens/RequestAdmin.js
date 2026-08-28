@@ -76,7 +76,7 @@ export default function RequestAdmin() {
     }
 
     return (
-        <>
+        <div className="page">
 
             {(show === "requests") ?
                 <>
@@ -182,6 +182,6 @@ export default function RequestAdmin() {
                         </div>
                     </form>
                 </div>
-            }</>
+            }</div>
     )
 }

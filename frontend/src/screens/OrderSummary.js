@@ -24,7 +24,7 @@ export default function OrderSummary(props) {
     });
 
     return (
-        <>
+        <div className="page">
             <Link to="/admindashboard">Back to result</Link>
             <h4 style={{ marginLeft: ".5rem" }} >All Orders : </h4>
 
@@ -62,6 +62,6 @@ export default function OrderSummary(props) {
                     totalPosts={orders.length}
                     paginate={paginate}
                 /> : null}
-        </>
+        </div>
     )
 }

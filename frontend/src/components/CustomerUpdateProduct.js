@@ -63,7 +63,7 @@ export default function CustomerUpdateProduct(props) {
     }
 
     return (
-        <div>
+        <div className="page">
             {
                 error ? (
                     <MessageBox variant="danger">{error}</MessageBox>

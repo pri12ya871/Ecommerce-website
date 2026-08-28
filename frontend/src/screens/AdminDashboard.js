@@ -67,7 +67,7 @@ export default function DashboardScreen() {
   localStorage.setItem("orders", JSON.stringify(Orders))
 
   return (
-    <div>
+    <div className="page">
       <div className="row">
         <h1>Dashboard</h1>
       </div>

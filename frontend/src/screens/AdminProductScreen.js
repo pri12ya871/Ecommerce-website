@@ -24,7 +24,7 @@ export default function AdminProductScreen(props) {
   }, [dispatch, productId]);
 
   return (
-    <div>
+    <div className="page">
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (

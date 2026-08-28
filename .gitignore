@@ -3,3 +3,6 @@ node_modules/
 
 # runtime-generated datastore (auto-seeded on first server start)
 backend/storage/
+
+# stray personal upload, not part of the app
+frontend/public/images/WhatsApp_Image_*

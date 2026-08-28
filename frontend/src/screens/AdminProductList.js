@@ -33,14 +33,14 @@ export default function AdminProductList() {
     dispatch(setSearch())
   }, [dispatch]);
   return (
-    <div>
+    <div className="page">
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <div className="row center">
+          <div className="pgrid">
             {currentPosts.map((product) => (
               <AdminProduct key={product._id} product={product}></AdminProduct>
             ))}

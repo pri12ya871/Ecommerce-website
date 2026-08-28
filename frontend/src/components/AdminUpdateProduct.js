@@ -58,7 +58,7 @@ export default function AdminUpdateProduct(props) {
     }
 
     return (
-        <div>
+        <div className="page">
             {
                 error ? (
                     <MessageBox variant="danger">{error}</MessageBox>

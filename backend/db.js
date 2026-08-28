@@ -7,7 +7,11 @@ import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = path.join(__dirname, 'storage');
+// On serverless hosts (Vercel) the bundle is read-only; /tmp is the only
+// writable path. The store re-seeds itself there on cold start.
+const DATA_DIR = process.env.VERCEL
+  ? '/tmp/icon-store-storage'
+  : path.join(__dirname, 'storage');
 
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });

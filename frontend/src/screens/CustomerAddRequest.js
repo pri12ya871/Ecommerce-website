@@ -47,9 +47,9 @@ export default function CustomerAddRequest(props) {
     }
 
 
-    return (<>
+    return (
 
-        <div>
+        <div className="page">
             <form className="form" onSubmit={submitProduct}>
                 <div>
                     <h1>Request admin to add product...</h1>
@@ -141,6 +141,5 @@ export default function CustomerAddRequest(props) {
                 </div>
             </form>
         </div>
-    </>
     )
 }

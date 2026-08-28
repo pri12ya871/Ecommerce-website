@@ -60,7 +60,7 @@ export default function ProfileScreen() {
     }
   };
   return (
-    <div>
+    <div className="page">
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>Seller Profile</h1>

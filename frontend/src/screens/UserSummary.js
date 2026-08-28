@@ -47,7 +47,7 @@ export default function UserSummary(props) {
 
 
     return (
-        <>
+        <div className="page">
             {(option === "seller") ?
                 <>
                     <Link to="/admindashboard">Back to result</Link>
@@ -104,6 +104,6 @@ export default function UserSummary(props) {
                     </table>
                 </>
             }
-        </>
+        </div>
     )
 }

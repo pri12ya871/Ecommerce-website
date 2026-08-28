@@ -50,7 +50,7 @@ export default function CustomerRequestStatus() {
 
 
     return (
-        <>
+        <div className="page">
             {
                 (requestedProducts.length === 0) ?
                     <>
@@ -115,6 +115,6 @@ export default function CustomerRequestStatus() {
                         </table>
                     </>
             }
-        </>
+        </div>
     )
 }

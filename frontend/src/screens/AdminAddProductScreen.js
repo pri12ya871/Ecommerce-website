@@ -44,9 +44,9 @@ export default function AdminHomeScreen(props) {
     }
 
 
-    return (<>
+    return (
 
-        <div>
+        <div className="page">
             <form className="form" onSubmit={submitProduct}>
                 <div>
                     <h1>Add products...</h1>
@@ -158,6 +158,5 @@ export default function AdminHomeScreen(props) {
                 </div>
             </form>
         </div>
-    </>
     )
 }
