@@ -72,41 +72,35 @@ reject seller requests, full product CRUD.
 
 ## Deployment
 
-The app deploys as two pieces: an Express API and the React frontend.
+The whole app — React frontend and Express API — deploys as a **single
+Vercel project**, so there is no CORS setup and no API URL to configure.
 
-### Live demo API (already deployed on Vercel)
+1. In Vercel: *Add New → Project*, import this repository.
+2. Leave every build setting untouched — [`vercel.json`](vercel.json)
+   already declares them.
+3. Deploy.
 
-A serverless build of the API is live on Vercel at
-`https://icon-store-api-pri12ya871s-projects.vercel.app`
-(project `icon-store-api`). It seeds the full catalog from
-[`backend/seed-data.json`](backend/seed-data.json) into `/tmp` on startup.
+How it fits together:
 
-**One manual step to make it public:** new Vercel projects ship with
-*Deployment Protection* on, which puts every request behind a Vercel login.
-Turn it off so browsers can call the API:
-*Vercel → project `icon-store-api` → Settings → Deployment Protection →
-Vercel Authentication → Disable → Save.*
+- [`api/[...path].js`](api) is a serverless function that hands every
+  `/api/*` request to the same Express app used in local development.
+- [`vercel.json`](vercel.json) builds `frontend/`, serves `frontend/build`,
+  and rewrites everything except `/api/` to `index.html` for the SPA router.
+- `backend/db.js` writes its JSON datastore to `/tmp` when `VERCEL` is set,
+  because the deployed bundle is read-only.
 
-### Owned, git-connected setup (recommended for a portfolio)
+Optional environment variables: `JWT_SECRET` (a random value is fine) and
+`PAYPAL_CLIENT_ID` (defaults to the `sb` sandbox account).
 
-**API → Render** (repo includes [`render.yaml`](render.yaml)):
-1. In Render: *New → Blueprint*, pick this repo — it creates the
-   `icon-store-api` web service (free plan) automatically.
-2. Note the service URL, e.g. `https://icon-store-api.onrender.com`.
+### Alternative: split deployment
 
-**Frontend → Vercel**:
-1. In Vercel: *Add New → Project*, import this repo and set
-   **Root Directory** to `frontend`.
-2. Add an environment variable `REACT_APP_API_URL` pointing at your API —
-   either the Render service above, or the live Vercel API once its
-   Deployment Protection is disabled.
-3. Deploy — build command and SPA rewrites are already configured
-   (`frontend/vercel.json`).
+[`render.yaml`](render.yaml) still describes an API-only Render service if
+you would rather host the two halves separately. In that case set
+`REACT_APP_API_URL` on the frontend to the API's origin.
 
-Note: on both Render's free tier and the Vercel serverless build, the JSON
-datastore is ephemeral — the catalog and demo accounts re-seed
-automatically on startup, so the store always works; only user-created
-data (orders, registrations) does not persist across restarts.
+Note: on both hosts the JSON datastore is ephemeral — the catalog and demo
+accounts re-seed automatically on startup, so the store always works; only
+user-created data (orders, registrations) does not survive a restart.
 
 ## Screenshots
 
