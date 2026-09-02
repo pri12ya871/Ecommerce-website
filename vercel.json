@@ -3,6 +3,8 @@
   "buildCommand": "npm install --prefix frontend && npm run build --prefix frontend",
   "outputDirectory": "frontend/build",
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/api/index?__vpath=/api/$1" },
+    { "source": "/send-text", "destination": "/api/index?__vpath=/send-text" },
+    { "source": "/((?!api/|send-text).*)", "destination": "/index.html" }
   ]
 }
