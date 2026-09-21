@@ -5,6 +5,8 @@ A modern, full-stack e-commerce application with a premium light-themed UI:
 cart, checkout with PayPal / Cash-on-Delivery, order history with PDF
 invoices, plus separate **Seller** and **Admin** portals.
 
+**Live demo:** https://icon-store-shop.vercel.app
+
 ![Home page](screenshots/01-home-hero.png)
 
 ## Quick start
