@@ -1,4 +1,4 @@
-# ICON Store — MERN E-commerce Platform
+# ICON Store — Full-Stack E-commerce Platform (React + Express)
 
 A modern, full-stack e-commerce application with a premium light-themed UI:
 140+ products across 9 categories, search with faceted filters, wishlist,
